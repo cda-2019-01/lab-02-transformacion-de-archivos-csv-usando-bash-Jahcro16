@@ -23,6 +23,6 @@ csvsql --query 'SELECT Estacion, strftime("%m",DATE(FECHA)) as Mes, AVG(VEL) as 
 csvsql --query 'SELECT Estacion, strftime("%Y",DATE(FECHA)) as Ano, AVG(VEL) as Velocidad from Out group by Ano, Estacion;' out.csv > velocidad-por-ano.csv
 csvsql --query 'SELECT Estacion, strftime("%H",HHMMSS) as Hora, AVG(VEL) as Velocidad from Out group by Hora, Estacion;' out.csv > velocidad-por-hora.csv
 rm out* 
-rm R*.csv               #Borra los intermedios
+rm R*.csv               #Borra los intermedio
 rm et*
 rm estaciones.csv
