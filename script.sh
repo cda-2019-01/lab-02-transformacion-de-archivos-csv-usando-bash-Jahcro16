@@ -1,5 +1,5 @@
 #!/bin/bash
-sed  -e 's/[\r\n]//g'  estaciones/estacion1.csv > et1.0
+sed  -e 's/[\r\n]//g'  estaciones/estacion1.csv > et1.0    #Organiza y limpia los datos
 sed -r 's%$%;Estacion1\r%g' et1.0 > et1.1
 sed -r 's%VEL;Estacion1%VEL;Estacion%g' et1.1 > R1.csv
 sed  -e 's/[\r\n]//g'  estaciones/estacion2.csv > et2.0
@@ -23,6 +23,6 @@ csvsql --query 'SELECT Estacion, strftime("%m",DATE(FECHA)) as Mes, AVG(VEL) as 
 csvsql --query 'SELECT Estacion, strftime("%Y",DATE(FECHA)) as Ano, AVG(VEL) as Velocidad from Out group by Ano, Estacion;' out.csv > velocidad-por-ano.csv
 csvsql --query 'SELECT Estacion, strftime("%H",HHMMSS) as Hora, AVG(VEL) as Velocidad from Out group by Hora, Estacion;' out.csv > velocidad-por-hora.csv
 rm out* 
-rm R*.csv
+rm R*.csv               #Borra los intermedios
 rm et*
 rm estaciones.csv
